@@ -33,20 +33,6 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         </div>
                     </div>
 
-                    @foreach($fields as $field)
-                        <div class="control is-horizontal" v-if="{{$field->id}} == field && {{$field->is_full}} == 1">
-                            <div class="control-label">
-                                <label></label>
-                            </div>
-                            <div class="control is-grouped  has-icon has-icon-right">
-                                <article class="message is-danger">
-                                  <div class="message-body">
-                                      Rühm on täis.
-                                  </div>
-                                </article>
-                            </div>
-                        </div>
-                    @endforeach
 
                     @include('registrations._student')
                     @include('registrations._parent1')

@@ -12,6 +12,14 @@ use App\User;
 class RegistrationsController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['create', 'store']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,7 +46,8 @@ class RegistrationsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -62,7 +71,7 @@ class RegistrationsController extends Controller
         ]);
 
         $parent2 = null;
-        if($request->parent2 && ($request->parent2['firstname'] || $request->parent2['lastname'])) {
+        if ($request->parent2 && ($request->parent2['firstname'] || $request->parent2['lastname'])) {
             $this->validate($request, [
                 'parent2.firstname' => 'required|max:255',
                 'parent2.lastname' => 'required|max:255',
@@ -77,7 +86,6 @@ class RegistrationsController extends Controller
         }
         $student = Person::create($request->student);
         $parent1 = Person::create($request->parent1);
-
 
         $registration = Registration::fromForm(
             $request->comment,
@@ -96,7 +104,8 @@ class RegistrationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Registration $registration)
@@ -107,7 +116,8 @@ class RegistrationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -118,8 +128,9 @@ class RegistrationsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -130,7 +141,8 @@ class RegistrationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
