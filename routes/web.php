@@ -15,6 +15,12 @@ Route::get('/', function () {
     return redirect('registration');
 });
 
+Route::get('test-email', function () {
+    $user = \App\User::superAdmin();
+    $user->notify(new \App\Notifications\TestEmail());
+    dd("Test email sent");
+});
+
 Route::get('registration', 'RegistrationsController@create');
 Route::post('registrations', 'RegistrationsController@store');
 

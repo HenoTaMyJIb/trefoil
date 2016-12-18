@@ -19,10 +19,10 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         </div>
                         <div class="control is-grouped  has-icon has-icon-right">
                             <div class="select is-fullwidth">
-                                <select class="input {{ $errors->has('field') ? 'is-danger' : '' }}" name="field" placeholder="Rühm" v-model="field">
+                                <select class="input {{ $errors->has('field') ? 'is-danger' : '' }}" name="field" placeholder="Rühm">
                                         <option disabled selected>Vali...</option>
                                         @foreach($fields as $field)
-                                            <option value="{{$field->id}}">{{$field->name}}</option>
+                                            <option value="{{$field->id}}" {{ old('field') == $field->id ? 'selected' : '' }}>{{$field->name}}</option>
                                         @endforeach
                                 </select>
                                 @if($errors->has('field'))
@@ -44,7 +44,7 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         <label>Kommentaar</label>
                       </div>
                       <div class="control is-grouped">
-                        <textarea class="textarea" name="comment" placeholder="Küsimus"></textarea>
+                        <textarea class="textarea" name="comment" placeholder="Küsimus">{{ old('comment') }}</textarea>
                       </div>
                     </div>
 
