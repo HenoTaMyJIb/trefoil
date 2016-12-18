@@ -95,7 +95,7 @@ class RegistrationsController extends Controller
             $parent2
         );
 
-        $user = User::first();
+        $user = User::superAdmin();
         $user->notify(new RegistrationCreated($registration));
 
         return redirect('registration')->with('status', 'Aitäh, registreerimine õnnestus! Me võtame Teiega ühendust.');
