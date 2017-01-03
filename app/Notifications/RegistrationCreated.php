@@ -44,9 +44,9 @@ class RegistrationCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Uus registreerimine rühma ' . $this->registration->field->name)
+                    ->line('Uus registreerimine rühma: ' . $this->registration->field->name)
                     ->line('Lapse nimi: ' . $this->registration->student->name . " - {$this->registration->student->age} aastat")
-                    ->line('Vanema nimi: ' . $this->registration->parent1->name . " ({$this->registration->parent1->email} | {$this->registration->parent1->phone})")
+                    ->line('Vanema nimi: ' . $this->registration->parent1->name . " (E-post: {$this->registration->parent1->email} | Telefon: {$this->registration->parent1->phone})")
                     ->line('Kommentaar: ' . $this->registration->comment)
                     ->action('Vaata', url('admin/registrations/' . $this->registration->id));
     }

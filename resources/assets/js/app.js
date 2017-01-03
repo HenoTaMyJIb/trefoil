@@ -15,6 +15,11 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 
+Vue.component('create-registration-view', require('./components/registrations/create'));
+
+import Form from './Form'
+window.Form = Form;
+
 const app = new Vue({
     el: '#app',
     data: {
