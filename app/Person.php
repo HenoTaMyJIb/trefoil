@@ -13,6 +13,13 @@ class Person extends Model
      */
     protected $fillable = ['firstname', 'lastname', 'address', 'personal_code', 'phone', 'email', 'work_place'];
 
+    /**
+     * The accessors to append channel's properties.
+     *
+     * @var array
+     */
+    protected $appends = ['name'];
+
     public function getNameAttribute()
     {
         return $this->firstname . ' ' . $this->lastname;

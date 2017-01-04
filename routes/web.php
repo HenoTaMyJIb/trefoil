@@ -25,6 +25,7 @@ Route::get('registration', 'RegistrationsController@create');
 Route::post('registrations', 'RegistrationsController@store');
 
 Route::get('admin/registrations', 'RegistrationsController@index');
+Route::get('admin/registrations/fetch', 'RegistrationsController@fetch');
 Route::get('admin/registrations/{registration}', 'RegistrationsController@show');
 
 Auth::routes();

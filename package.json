@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "sweetalert2": "^6.2.9"
+    "sweetalert2": "^6.2.9",
+    "vuetable-2": "^1.0.3"
   }
 }

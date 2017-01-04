@@ -34,3 +34,14 @@ $factory->define(App\Person::class, function (Faker\Generator $faker) {
         'work_place' => $faker->company,
     ];
 });
+
+$factory->define(App\Registration::class, function (Faker\Generator $faker) {
+    return [
+        'student_id' => factory(App\Person::class)->create()->id,
+        'parent1_id' => factory(App\Person::class)->create()->id,
+        'parent2_id' => factory(App\Person::class)->create()->id,
+        'field_id' => App\Field::get()->random()->id,
+        'comment' => $faker->sentence,
+        'status' => 'new',
+    ];
+});

@@ -13,9 +13,12 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('datatable', require('./components/global/Datatable.vue'));
+
 Vue.component('example', require('./components/Example.vue'));
 
 Vue.component('create-registration-view', require('./components/registrations/create'));
+Vue.component('registrations-view', require('./components/registrations/index'));
 
 import Form from './Form'
 window.Form = Form;

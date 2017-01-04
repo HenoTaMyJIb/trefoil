@@ -43,3 +43,14 @@ $panel-default-heading-bg: #fff;
 [v-cloak] {
   display: none;
 }
+
+.pagination-link.is-current {
+    background-color: #00d1b2;
+    border-color: #00d1b2;
+    color: #fff;
+}
+
+// .pagination-previous, .pagination-next, .pagination-link {
+//     border: 1px solid #dbdbdb;
+//     min-width: 2.5em;
+// }

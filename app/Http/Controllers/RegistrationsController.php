@@ -8,6 +8,7 @@ use App\Person;
 use App\Registration;
 use App\Notifications\RegistrationCreated;
 use App\User;
+use App\Helpers\Datatable;
 
 class RegistrationsController extends Controller
 {
@@ -29,6 +30,15 @@ class RegistrationsController extends Controller
         $registrations = Registration::orderBy('created_at', 'desc')->get();
 
         return view('registrations.index', compact('registrations'));
+    }
+
+    public function fetch(Request $request)
+    {
+        $query = Registration::with('student', 'parent1', 'parent2', 'field');
+
+        return (new Datatable($query))
+            ->order($request->order)
+            ->get();
     }
 
     /**
