@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,6 +40,15 @@
                         <span></span>
                         </span>
                         <div class="nav-right nav-menu">
+                        <a class="nav-item" href="{{ url('/logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                             <span class="nav-item">
                                 <a class="button is-primary is-inverted" href="http://www.trefoil.ee">
                                     <span class="icon">
@@ -48,6 +57,7 @@
                                 <span>Trefoil veebilehele</span>
                             </a>
                             </span>
+
                         </div>
                     </div>
                 </header>
@@ -60,6 +70,29 @@
                     <h2 class="subtitle">@yield('subtitle')</h2>
                 </div>
             </div>
+            <!-- Hero footer: will stick at the bottom -->
+        @if(auth()->check())
+              <div class="hero-foot">
+                <nav class="tabs">
+                  <div class="container">
+                    <ul>
+                      <li href="{{url('admin/registrations')}}"><a>Registreerimised</a></li>
+                      <li>
+                          <a href="{{ url('/logout') }}"
+                              onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                              Logout
+                          </a>
+
+                          <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                          </form>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+        @endif
             @if (count($errors) > 0)
                 <div class="notification is-warning">
                   Palun kontrolli andmed
