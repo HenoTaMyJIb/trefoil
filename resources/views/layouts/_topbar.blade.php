@@ -9,13 +9,12 @@
             <span></span>
         </span>
         <div class="nav-right nav-menu">
-            <a class="nav-item" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-             Logi välja
-            </a>
-
-            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
+            <a class="nav-item " href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+          <i class="fa fa-lock"></i> Logi välja
+        </a>
+        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
             <span class="nav-item">
                 <a class="button is-primary is-inverted" href="http://www.trefoil.ee">
                     <span class="icon">
