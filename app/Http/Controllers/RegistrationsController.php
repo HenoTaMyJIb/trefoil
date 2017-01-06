@@ -32,12 +32,16 @@ class RegistrationsController extends Controller
         return view('registrations.index', compact('registrations'));
     }
 
+    /**
+     *
+     */
     public function fetch(Request $request)
     {
-        $query = Registration::with('student', 'parent1', 'parent2', 'field');
+        $query = Registration::with('student', 'parent1', 'parent2', 'field')
+            ->status($request->status);
 
         return (new Datatable($query))
-            ->order($request->order)
+            ->order($request->sort)
             ->get();
     }
 

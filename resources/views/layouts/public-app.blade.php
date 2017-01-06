@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,43 +25,11 @@
 </head>
 
 <body>
+
     <div id="app">
+        @include('layouts._topbar')
         <section class="hero is-primary">
             <!-- Hero header: will stick at the top -->
-            <div class="hero-head">
-                <header class="nav">
-                    <div class="container">
-                        <div class="nav-left">
-                            <a class="nav-item" href="http://trefoil.ee"><h3 class="subtitle">Trefoil Spordikool<h3></a>
-                        </div>
-                        <span class="nav-toggle">
-                         <span></span>
-                        <span></span>
-                        <span></span>
-                        </span>
-                        <div class="nav-right nav-menu">
-                        <a class="nav-item" href="{{ url('/logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                            <span class="nav-item">
-                                <a class="button is-primary is-inverted" href="http://www.trefoil.ee">
-                                    <span class="icon">
-                                        <i class="fa fa-arrow-circle-o-right"></i>
-                                    </span>
-                                <span>Trefoil veebilehele</span>
-                            </a>
-                            </span>
-
-                        </div>
-                    </div>
-                </header>
-            </div>
 
             <!-- Hero content: will be in the middle -->
             <div class="hero-body">
@@ -70,38 +38,13 @@
                     <h2 class="subtitle">@yield('subtitle')</h2>
                 </div>
             </div>
-            <!-- Hero footer: will stick at the bottom -->
-        @if(auth()->check())
-              <div class="hero-foot">
-                <nav class="tabs">
-                  <div class="container">
-                    <ul>
-                      <li href="{{url('admin/registrations')}}"><a>Registreerimised</a></li>
-                      <li>
-                          <a href="{{ url('/logout') }}"
-                              onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                              Logout
-                          </a>
 
-                          <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                              {{ csrf_field() }}
-                          </form>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-        @endif
-            @if (count($errors) > 0)
-                <div class="notification is-warning">
-                  Palun kontrolli andmed
-                </div>
-            @endif
+            @include('layouts._navigation')
+
             @if (session('status'))
-                <div class="notification is-success">
+            <div class="notification is-success">
                 <h2 class="title">{{ session('status') }}</h2>
-                </div>
+            </div>
             @endif
         </section>
         @yield('content')

@@ -59,4 +59,13 @@ class Registration extends Model
         return $registration;
     }
 
+    public function scopeStatus($query, $status)
+    {
+        if(!$status) {
+            return $query;
+        }
+
+        return $query->where('status', $status);
+    }
+
 }

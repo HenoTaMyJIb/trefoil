@@ -2,7 +2,8 @@
 <div>
     <vuetable ref="vuetable" :api-url="url" :fields="columns" :sort-order="sortOrder" :append-params="filters" class="table table-bordered table-hover table-responsive is-narrow" pagination-path="pagination" @vuetable:pagination-data="onPaginationData"
         @vuetable:load-success="onLoadSuccess" @vuetable:loading="showLoader" @vuetable:loaded="hideLoader" @vuetable:cell-clicked="onCellClicked"
-        :detail-row-component="detailRowComponent">
+        :detail-row-component="detailRowComponent"
+        :css="css">
     </vuetable>
       <component :is="paginationComponent" ref="pagination" @vuetable-pagination:change-page="onChangePage"></component>
     <div class="row">
@@ -53,6 +54,10 @@ export default {
             paginationComponent: 'datatable-pagination',
             perPage: 10,
             paginationInfoTemplate: 'Showing record: {from} to {to} from {total} item(s)',
+            css: {
+              ascendingIcon: 'fa fa-chevron-up',
+              descendingIcon: 'fa fa-chevron-down',
+            }
         }
     },
 

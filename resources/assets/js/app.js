@@ -12,8 +12,9 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+require('./components/global/Tabs')
 Vue.component('datatable', require('./components/global/Datatable.vue'));
+
 
 Vue.component('example', require('./components/Example.vue'));
 

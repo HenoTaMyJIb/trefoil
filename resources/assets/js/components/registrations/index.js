@@ -23,6 +23,10 @@ module.exports = {
                 title: 'Kuupäev',
                 sortField: 'created_at'
             }, {
+                name: 'status',
+                title: 'Status',
+                sortField: 'status'
+            }, {
                 name: '__component:registrations-actions',
                 dataClass: 'text-center'
             }]
