@@ -1,6 +1,6 @@
-<hr style="margin-top:40px"/>
+<hr class="divider" style="margin-top:40px"/>
 <h2 class="subtitle required">Lapse andmed</h2>
-<hr/>
+<hr class="divider"/>
 <div class="control is-horizontal">
     <div class="control-label">
         <label>Nimi</label>

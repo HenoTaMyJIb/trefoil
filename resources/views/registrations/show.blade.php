@@ -8,6 +8,7 @@
 @section('content')
 <section class="section">
     <div class="container">
+        {{-- <modal></modal> --}}
         <div class="box">
             <div class="columns">
                 <div class="column is-half">
@@ -126,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <a href="/admin/registrations" class="button is-primary">Tagasi</a>
+        <a href="{{ url()->previous() }}" class="button is-primary">Tagasi</a>
 
     </div>
 </section>

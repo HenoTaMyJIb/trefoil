@@ -1,11 +1,9 @@
 <template>
 <div>
-    <vuetable ref="vuetable" :api-url="url" :fields="columns" :sort-order="sortOrder" :append-params="filters" class="table table-bordered table-hover table-responsive is-narrow" pagination-path="pagination" @vuetable:pagination-data="onPaginationData"
-        @vuetable:load-success="onLoadSuccess" @vuetable:loading="showLoader" @vuetable:loaded="hideLoader" @vuetable:cell-clicked="onCellClicked"
-        :detail-row-component="detailRowComponent"
-        :css="css">
+    <vuetable ref="vuetable" :api-url="url" :fields="columns" :sort-order="sortOrder" :append-params="filters" class="table table-bordered table-hover table-responsive is-narrow" pagination-path="pagination" @vuetable:pagination-data="onPaginationData" @vuetable:load-success="onLoadSuccess"
+        @vuetable:loading="showLoader" @vuetable:loaded="hideLoader" @vuetable:cell-clicked="onCellClicked" :detail-row-component="detailRowComponent" :css="css">
     </vuetable>
-      <component :is="paginationComponent" ref="pagination" @vuetable-pagination:change-page="onChangePage"></component>
+    <component :is="paginationComponent" ref="pagination" @vuetable-pagination:change-page="onChangePage"></component>
     <div class="row">
         <div class="col-md-6">
             <vuetable-pagination-info ref="paginationInfo" :pagination-info-template="paginationInfoTemplate"></vuetable-pagination-info>
@@ -35,6 +33,15 @@ export default {
         },
         detailRowComponent: {
             type: String
+        },
+        sortOrder: {
+            type: Array,
+            default () {
+                return [{
+                    field: 'id',
+                    direction: 'asc',
+                }];
+            }
         }
     },
 
@@ -46,17 +53,13 @@ export default {
             loading: '',
             searchFor: '',
             moreParams: {},
-            sortOrder: [{
-                field: 'id',
-                direction: 'asc',
-            }],
             multiSort: true,
             paginationComponent: 'datatable-pagination',
             perPage: 10,
             paginationInfoTemplate: 'Showing record: {from} to {to} from {total} item(s)',
             css: {
-              ascendingIcon: 'fa fa-chevron-up',
-              descendingIcon: 'fa fa-chevron-down',
+                ascendingIcon: 'fa fa-chevron-up',
+                descendingIcon: 'fa fa-chevron-down',
             }
         }
     },
@@ -106,12 +109,12 @@ export default {
             this.$refs.paginationInfo.setPaginationData(response.data)
 
             let data = response.data.data
-            // if (this.searchFor !== '') {
-            //     for (let n in data) {
-            //         data[n].name = this.highlight(this.searchFor, data[n].name)
-            //         data[n].email = this.highlight(this.searchFor, data[n].email)
-            //     }
-            // }
+                // if (this.searchFor !== '') {
+                //     for (let n in data) {
+                //         data[n].name = this.highlight(this.searchFor, data[n].name)
+                //         data[n].email = this.highlight(this.searchFor, data[n].email)
+                //     }
+                // }
         },
         onLoadError(response) {
             if (response.status == 400) {

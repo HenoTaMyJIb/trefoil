@@ -13,6 +13,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 require('./components/global/Tabs')
+require('./components/global/Modal')
 Vue.component('datatable', require('./components/global/Datatable.vue'));
 
 

@@ -1,6 +1,6 @@
-<hr/>
+<hr class="divider"/>
 <h2 class="subtitle required">Esimese vanema andmed</h2>
-<hr/>
+<hr class="divider"/>
 <div class="control is-horizontal">
     <div class="control-label">
         <label>Nimi</label>

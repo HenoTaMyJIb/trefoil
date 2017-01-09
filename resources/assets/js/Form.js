@@ -160,8 +160,8 @@ export default class Form {
         return new Promise((resolve, reject) => {
             axios[requestType](url, this.data())
                 .then(response => {
+                    this.reset();
                     this.onSuccess(response.data);
-
                     resolve(response.data);
                 })
                 .catch(error => {
@@ -180,10 +180,10 @@ export default class Form {
      */
     onSuccess(data) {
         swal({
-            title: 'Success',
+            title: 'Registreerimine õnnestus',
             text: data.message,
             type: 'success',
-            timer: 2000
+            // timer: 2000
         })
     }
 

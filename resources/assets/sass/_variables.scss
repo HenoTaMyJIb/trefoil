@@ -50,6 +50,14 @@ $panel-default-heading-bg: #fff;
     color: #fff;
 }
 
+hr {
+  background-color: white !important;
+}
+
+hr.divider {
+   background-color: #dbdbdb !important;
+}
+
 // .pagination-previous, .pagination-next, .pagination-link {
 //     border: 1px solid #dbdbdb;
 //     min-width: 2.5em;

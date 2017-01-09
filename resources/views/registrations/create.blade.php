@@ -19,10 +19,11 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         </div>
                         <div class="control is-grouped  has-icon has-icon-right">
                             <div class="select is-fullwidth">
-                                <select class="input {{ $errors->has('field') ? 'is-danger' : '' }}" v-model="form.field" @change="isFieldFull" name="field" placeholder="Rühm">
+                                <select class="input" v-bind:class="{'is-danger': form.errors.has('field') }" v-model="form.field" @change="isFieldFull" name="field" placeholder="Rühm">
                                     <option v-for="field in fields" :value="field.id" v-text="field.name"></option>
                                 </select>
                                 <p class="help is-info title is-6" v-if="fieldFull"><i class="fa fa-warning"></i> Rühm on täis. Teie taotlus on automaatselt staatusega 'Ootel'.</p>
+                                <span class="help is-danger" v-if="form.errors.has('field')">@{{ form.errors.get('field') }}</span>
                             </div>
                         </div>
 
@@ -32,7 +33,7 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                     @include('registrations._parent1')
                     @include('registrations._parent2')
 
-                    <hr/>
+                    <hr class="divider"/>
                     <div class="control is-horizontal">
                       <div class="control-label">
                         <label>Kommentaar</label>
@@ -47,8 +48,14 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                     </div>
 
                     <p class="control">
-                        <button class="button is-primary" :disabled="form.errors.any()">Registreeri</button>
+                        <button class="button is-primary">Registreeri</button>
                     </p>
+
+                    @if(env('APP_ENV') == 'local')
+                    <p class="control">
+                        <button type="button" class="button is-default" @click.prevent="generateData">Test data</button>
+                    </p>
+                @endif
 
                 </form>
             </div>

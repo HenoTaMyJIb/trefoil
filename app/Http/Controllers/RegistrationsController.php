@@ -70,36 +70,35 @@ class RegistrationsController extends Controller
             'field' => 'required',
             'student.firstname' => 'required|max:255',
             'student.lastname' => 'required|max:255',
-            'student.personal_code' => 'required|numeric',
+            'student.personal_code' => 'required|numeric|digits :11|personal_code',
             'student.address' => 'required|max:1000',
             'student.email' => 'email|max:255',
             'student.phone' => 'max:255',
 
             'parent1.firstname' => 'required|max:255',
             'parent1.lastname' => 'required|max:255',
-            'parent1.personal_code' => 'required|numeric',
+            'parent1.personal_code' => 'required|numeric|digits :11|personal_code',
             'parent1.address' => 'required|max:1000',
             'parent1.phone' => 'required',
             'parent1.email' => 'required|email|max:255',
             'parent1.work_place' => 'required|max:255',
+
+            'parent2.firstname' => 'required_with:parent2.lastname,parent2.personal_code|max:255',
+            'parent2.lastname' => 'required_with:parent2.firstname,parent2.personal_code|max:255',
+            'parent2.personal_code' => 'required_with:parent2.firstname,parent2.lastname|numeric|digits :11|personal_code',
+            'parent2.address' => 'max:1000',
+            'parent2.email' => 'email|max:255',
+            'parent2.work_place' => 'max:255',
         ]);
 
-        $parent2 = null;
-        if ($request->parent2 && ($request->parent2['firstname'] || $request->parent2['lastname'])) {
-            $this->validate($request, [
-                'parent2.firstname' => 'required|max:255',
-                'parent2.lastname' => 'required|max:255',
-                'parent2.personal_code' => 'required|numeric',
-                'parent2.address' => 'required|max:1000',
-                'parent2.phone' => 'required',
-                'parent2.email' => 'required|email|max:255',
-                'parent2.work_place' => 'required|max:255',
-            ]);
-
-            $parent2 = Person::create($request->parent2);
-        }
         $student = Person::create($request->student);
         $parent1 = Person::create($request->parent1);
+
+        $parent2 = null;
+        if($request->parent2 && ($request->parent2['firstname'] && $request->parent2['lastname'] && $request->parent2['personal_code'])) {
+            $parent2 = Person::create($request->parent2);
+        }
+
 
         $registration = Registration::fromForm(
             $request->comment,
@@ -112,7 +111,7 @@ class RegistrationsController extends Controller
         $user = User::superAdmin();
         $user->notify(new RegistrationCreated($registration));
 
-        return redirect('registration')->with('status', 'Aitäh, registreerimine õnnestus! Me võtame Teiega ühendust.');
+        return ['message' => 'Aitäh, registreerimine õnnestus! Me võtame Teiega ühendust.'];
     }
 
     /**
@@ -162,5 +161,10 @@ class RegistrationsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function waitingCount()
+    {
+        return Registration::status('waiting')->count();
     }
 }
