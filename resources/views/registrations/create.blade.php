@@ -39,7 +39,7 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         <label>Kommentaar</label>
                       </div>
                       <div class="control is-grouped">
-                        <textarea class="textarea" name="comment" v-model="form.comment" placeholder="Küsimus">{{ old('comment') }}</textarea>
+                        <textarea class="textarea" name="comment" v-model="form.comment" placeholder="Küsimus/Kommentaar"></textarea>
                       </div>
                     </div>
 

@@ -26,7 +26,7 @@
 
 <body>
 
-    <div id="app">
+    <div id="app" v-cloak>
         @include('layouts._topbar')
         <section class="hero is-primary">
             <!-- Hero header: will stick at the top -->
@@ -48,15 +48,6 @@
             @endif
         </section>
         @yield('content')
-        <footer class="footer">
-          <div class="container">
-            <div class="content has-text-centered">
-              <p>
-                Probleemide korral kirjutage <strong>help@trefoil.ee</strong>
-              </p>
-            </div>
-          </div>
-        </footer>
     </div>
 
     <!-- Scripts -->

@@ -14,6 +14,7 @@ class FieldsTableSeeder extends Seeder
         DB::table('fields')->insert([
             'name' => 'Mudilaste võimlemine (2 - 3 aastat, koos vanematega)',
             'description' => '',
+            'is_full' => true
         ]);
 
         DB::table('fields')->insert([
