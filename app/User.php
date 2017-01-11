@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return self::where('email', env('SUPER_ADMIN'))->first();
     }
+
+    public static function admin()
+    {
+        return self::where('email', env('ADMIN'))->first();
+    }
 }

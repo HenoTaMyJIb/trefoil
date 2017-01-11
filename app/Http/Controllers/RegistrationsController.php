@@ -108,8 +108,8 @@ class RegistrationsController extends Controller
             $parent2
         );
 
-        $user = User::superAdmin();
-        $user->notify(new RegistrationCreated($registration));
+        User::superAdmin()->notify(new RegistrationCreated($registration));
+        User::admin()->notify(new RegistrationCreated($registration));
 
         return ['message' => 'Aitäh, registreerimine õnnestus! Me võtame Teiega ühendust.'];
     }

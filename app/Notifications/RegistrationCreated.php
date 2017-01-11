@@ -44,6 +44,7 @@ class RegistrationCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject('Uus registreerimine')
                     ->line('Uus registreerimine rühma: ' . $this->registration->field->name)
                     ->line('Lapse nimi: ' . $this->registration->student->name . " - {$this->registration->student->age} aastat")
                     ->line('Vanema nimi: ' . $this->registration->parent1->name . " (E-post: {$this->registration->parent1->email} | Telefon: {$this->registration->parent1->phone})")
