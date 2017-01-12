@@ -29,12 +29,24 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
 
                     </div>
 
+                    <div class="control is-horizontal" style="margin-top: 40px">
+                        <div class="control-label" style="padding-top:0">
+                            <label><i class="fa fa-info-circle text-info"></i></label>
+                        </div>
+                        <div class="control is-grouped  has-icon has-icon-right">
+                            <div class="is-fullwidth">
+                                <p>Täpsemat tunniplaani saate vaadata <a href="http://www.trefoil.ee/spordikool/tunniplaan" target="_blank">siit</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+
                     @include('registrations._student')
                     @include('registrations._parent1')
                     @include('registrations._parent2')
 
                     <hr class="divider"/>
-                    <div class="control is-horizontal">
+                    <div class="control is-horizontal" style="margin-bottom: 15px">
                       <div class="control-label">
                         <label>Kommentaar</label>
                       </div>
@@ -43,13 +55,25 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                       </div>
                     </div>
 
-                    <div class="notification is-warning" v-if="form.errors.any()">
-                        <h5 class="title is-5">Kontrolli andmed</h5>
+                  <div class="control is-horizontal">
+                    <div class="control-label">
+                      <label class="label"></label>
                     </div>
+                    <div class="control">
+                        <div class="notification is-warning is-fullwidth" v-if="form.errors.any()" style="width:100%">
+                            <h5 class="title is-5">Kontrolli andmed</h5>
+                        </div>
+                    </div>
+                  </div>
 
-                    <p class="control">
-                        <button class="button is-primary">Registreeri</button>
-                    </p>
+                    <div class="control is-horizontal" >
+                      <div class="control-label">
+                        <label class="label"></label>
+                      </div>
+                      <div class="control">
+                        <button class="button is-primary is-fullwidth is-medium">Registreeri</button>
+                      </div>
+                    </div>
 
                     @if(env('APP_ENV') == 'local')
                     <p class="control">
